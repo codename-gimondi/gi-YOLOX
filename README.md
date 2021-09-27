@@ -27,9 +27,9 @@ where
 
 ## Model Performance
 
-Input dimension | Inference speed on RTX2070s desktop | Average Precision
---- | --- | ---
-320x320 | 1.38 ms | 61.35
+Input dimension | Inference speed on RTX2070s desktop | Average Precision | Batch Size
+--- | --- | --- | ---
+320x320 | 1.38 ms | 61.35 | 16
 
 
 # === UPSTREAM README ===
