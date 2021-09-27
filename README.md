@@ -15,6 +15,16 @@ The weights are saved to `YOLOX_outputs/nano`
 
 Use `best_ckpt.pth`.
 
+**Run demo for sanity check**
+
+```bash
+python3 tools/demo.py video -f exps/default/nano-7class-hydo.py YOLOX_outputs/nano-7class-hydo/best_ckpt.pth --path TEST_VIDEO.MP4 --conf 0.25 --nms 0.45 --tsize 320 --save_result --device gpu
+```
+where
+
++ `TEST_VIDEO.MP4` is located in `YOLOX`
++ `--tsize` match neural network input/output size
+
 ## Model Performance
 
 Input dimension | Inference speed on RTX2070s desktop | Average Precision
