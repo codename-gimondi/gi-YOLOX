@@ -1,6 +1,19 @@
 <div align="center"><img src="assets/logo.png" width="350"></div>
 <img src="assets/demo.png" >
 
+# Training YOLOX for Hydo
+
+**Please see `tensorturtle/autolabel-cyclist-yolov5` for preparing data up to this point.**
+
+**Script start training**
+```bash
+python3 tools/train.py -f exps/default/nano.py -d 1 -b 8 --fp16 -o -c yolox_nano.pth
+```
++ Uses default nano exp. Needs to be modified to match correct number of classes
++ -d: number of GPUs
++ -b: batch size ( recommended 8 per GPU )
++ -c: path to COCO pretrained checkpoint file
+
 ## Introduction
 YOLOX is an anchor-free version of YOLO, with a simpler design but better performance! It aims to bridge the gap between research and industrial communities.
 For more details, please refer to our [report on Arxiv](https://arxiv.org/abs/2107.08430).
