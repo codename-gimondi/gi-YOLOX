@@ -17,9 +17,9 @@ Use `best_ckpt.pth`.
 
 ## Model Performance
 
-Input dimension | Inference speed on RTX2070s desktop
---- | ---
-320x320 | 2.12 ms
+Input dimension | Inference speed on RTX2070s desktop | Average Precision
+--- | --- | ---
+320x320 | 2.12 ms | 61.35
 
 
 # === UPSTREAM README ===
