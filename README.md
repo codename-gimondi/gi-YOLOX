@@ -11,6 +11,10 @@ python3 tools/train.py -f exps/default/nano.py -d 1 -b 8 --fp16 -o -c yolox_nano
 + -b: batch size ( recommended 8 per GPU )
 + -c: path to COCO pretrained checkpoint file
 
+The weights are saved to `YOLOX_outputs/nano`
+
+Use `best_ckpt.pth`.
+
 # === UPSTREAM README ===
 
 <div align="center"><img src="assets/logo.png" width="350"></div>
