@@ -1,4 +1,4 @@
-# Training YOLOX for Hydo
+# Training YOLOX Nano for Hydo
 
 **Please see `tensorturtle/autolabel-cyclist-yolov5` for preparing data up to this point.**
 
