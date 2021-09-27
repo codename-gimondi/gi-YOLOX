@@ -4,7 +4,7 @@
 
 **Script to start training**
 ```bash
-python3 tools/train.py -f exps/default/nano-7class-hydo.py -d 1 -b 8 --fp16 -o -c yolox_nano.pth
+python3 tools/train.py -f exps/default/nano-7class-hydo.py -d 1 -b 16 --fp16 -o -c yolox_nano.pth
 ```
 + Uses default nano exp. Needs to be modified to match correct number of classes
 + -d: number of GPUs
