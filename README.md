@@ -15,6 +15,13 @@ The weights are saved to `YOLOX_outputs/nano`
 
 Use `best_ckpt.pth`.
 
+## Model Performance
+
+Input dimension | Inference speed on RTX2070s desktop
+--- | ---
+320x320 | 2.12 ms
+
+
 # === UPSTREAM README ===
 
 <div align="center"><img src="assets/logo.png" width="350"></div>
