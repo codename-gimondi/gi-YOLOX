@@ -30,7 +30,7 @@ using namespace nvinfer1;
 // stuff we know about the network and the input/output blobs
 static const int INPUT_W = 640;
 static const int INPUT_H = 640;
-static const int NUM_CLASSES = 80;
+static const int NUM_CLASSES = 7;
 const char* INPUT_BLOB_NAME = "input_0";
 const char* OUTPUT_BLOB_NAME = "output_0";
 static Logger gLogger;

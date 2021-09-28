@@ -20,10 +20,10 @@ def make_parser():
         "--output-name", type=str, default="yolox.onnx", help="output name of models"
     )
     parser.add_argument(
-        "--input", default="images", type=str, help="input node name of onnx model"
+        "--input", default="input_0", type=str, help="input node name of onnx model"
     )
     parser.add_argument(
-        "--output", default="output", type=str, help="output node name of onnx model"
+        "--output", default="output_0", type=str, help="output node name of onnx model"
     )
     parser.add_argument(
         "-o", "--opset", default=11, type=int, help="onnx opset version"
