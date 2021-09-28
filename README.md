@@ -1,42 +1,5 @@
-# Training YOLOX Nano for Hydo
-
-**Please see `tensorturtle/autolabel-cyclist-yolov5` for preparing data up to this point.**
-
-**Script to start training**
-```bash
-python3 tools/train.py -f exps/default/nano-7class-hydo.py -d 1 -b 16 --fp16 -o -c yolox_nano.pth
-```
-+ Uses default nano exp. Needs to be modified to match correct number of classes
-+ -d: number of GPUs
-+ -b: batch size ( recommended 8 per GPU )
-+ -c: path to COCO pretrained checkpoint file
-
-The weights are saved to `YOLOX_outputs/nano`
-
-Use `best_ckpt.pth`.
-
-**Run demo for sanity check**
-
-```bash
-python3 tools/demo.py video -f exps/default/nano-7class-hydo.py -c YOLOX_outputs/nano-7class-hydo/best_ckpt.pth --path TEST_VIDEO.MP4 --conf 0.25 --nms 0.45 --tsize 320 --save_result --device gpu
-```
-where
-
-+ `TEST_VIDEO.MP4` is located in `YOLOX`
-+ `--tsize` match neural network input/output size
-
-## Model Performance
-
-Input dimension | Inference speed on RTX2070s desktop | Average Precision | Batch Size
---- | --- | --- | ---
-320x320 | 1.38 ms | 61.35 | 16
-
-
-# === UPSTREAM README ===
-
 <div align="center"><img src="assets/logo.png" width="350"></div>
 <img src="assets/demo.png" >
-
 
 ## Introduction
 YOLOX is an anchor-free version of YOLO, with a simpler design but better performance! It aims to bridge the gap between research and industrial communities.
@@ -67,7 +30,7 @@ This repo is an implementation of PyTorch version YOLOX, there is also a [MegEng
 | ------        |:---: | :---:    | :---:       |:---:     |:---:  | :---: | :----: |
 |[YOLOX-s](./exps/default/yolox_s.py)    |640  |40.5 |40.5      |9.8      |9.0 | 26.8 | [github](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.pth) |
 |[YOLOX-m](./exps/default/yolox_m.py)    |640  |46.9 |47.2      |12.3     |25.3 |73.8| [github](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_m.pth) |
-|[YOLOX-l](./exps/default/yolox_l.py)    |640  |47.7 |50.1      |14.5     |54.2| 155.6 | [github](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_l.pth) |
+|[YOLOX-l](./exps/default/yolox_l.py)    |640  |49.7 |50.1      |14.5     |54.2| 155.6 | [github](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_l.pth) |
 |[YOLOX-x](./exps/default/yolox_x.py)   |640   |51.1 |**51.5**  | 17.3    |99.1 |281.9 | [github](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_x.pth) |
 |[YOLOX-Darknet53](./exps/default/yolov3.py)   |640  | 47.7 | 48.0 | 11.1 |63.7 | 185.3 | [github](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_darknet.pth) |
 

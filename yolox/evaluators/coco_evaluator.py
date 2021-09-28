@@ -153,6 +153,9 @@ class COCOEvaluator:
             cls = output[:, 6]
             scores = output[:, 4] * output[:, 5]
             for ind in range(bboxes.shape[0]):
+                if int(cls[ind]) not in self.dataloader.dataset.class_ids:
+                    continue
+                    logger.info("cls[ind] not in self.dataloader.dataset.class_ids.\nSkipping...")
                 label = self.dataloader.dataset.class_ids[int(cls[ind])]
                 pred_data = {
                     "image_id": int(img_id),

@@ -18,7 +18,8 @@ COCO/
   annotations/
     instances_{train,val}2017.json
   {train,val}2017/
-    # image files that are mentioned in the corresponding json
+    images
+        # .jpg image files that are mentioned in the corresponding json
 ```
 
 You can use the 2014 version of the dataset as well.

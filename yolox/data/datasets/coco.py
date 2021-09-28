@@ -44,8 +44,16 @@ class COCODataset(Dataset):
 
         self.coco = COCO(os.path.join(self.data_dir, "annotations", self.json_file))
         self.ids = self.coco.getImgIds()
-        self.class_ids = sorted(self.coco.getCatIds())
-        cats = self.coco.loadCats(self.coco.getCatIds())
+        #self.class_ids = sorted(self.coco.getCatIds())
+        self.class_ids = [x for x in range(7)]
+        #cats = self.coco.loadCats(self.coco.getCatIds())
+        cats = [{'id': 0, 'name': 'bicycle'},
+         {'id': 1, 'name': 'bus'},
+         {'id': 2, 'name': 'car'},
+         {'id': 3, 'name': 'cyclist'},
+         {'id': 4, 'name': 'motorcycle'},
+         {'id': 5, 'name': 'pedestrian'},
+         {'id': 6, 'name': 'truck'}]
         self._classes = tuple([c["name"] for c in cats])
         self.imgs = None
         self.name = name
@@ -54,6 +62,7 @@ class COCODataset(Dataset):
         self.annotations = self._load_coco_annotations()
         if cache:
             self._cache_images()
+        #import IPython; IPython.embed()
 
     def __len__(self):
         return len(self.ids)
@@ -169,7 +178,10 @@ class COCODataset(Dataset):
         img_file = os.path.join(self.data_dir, self.name, file_name)
 
         img = cv2.imread(img_file)
-        assert img is not None
+        if img is None:
+            print(f"Error. 'img' is None. img: {img}, img_file {img_file}, file_name: {file_name}, index: {index}")
+            assert img is not None
+            
 
         return img
 
