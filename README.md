@@ -15,6 +15,8 @@ The weights are saved to `YOLOX_outputs/nano`
 
 Use `best_ckpt.pth`.
 
+# Inference
+
 **Run demo for sanity check**
 
 ```bash
