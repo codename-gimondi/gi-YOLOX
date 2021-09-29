@@ -32,6 +32,8 @@ python3 tools/trt.py -f exps/default/nano-7class-hydo.py
 ```
 This will generate a `model_trt.engine` in `YOLOX_outputs/nano-7class-hydo/`.
 
+*See [TensorRT README](YOLOX_tt/demo/TensorRT/python/README.md)*
+
 **Run image inference on Jetson Nano**
 
 ```bash
