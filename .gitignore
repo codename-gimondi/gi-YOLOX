@@ -2,10 +2,10 @@
 *~
 
 # user experiments directory
-#YOLOX_outputs/
 datasets/
 example_video/
 *.MP4
+*.mp4
 
 
 # temporary files which can be created if a process still has a handle open of a deleted file

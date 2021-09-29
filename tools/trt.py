@@ -59,7 +59,7 @@ def main():
         [x],
         fp16_mode=True,
         log_level=trt.Logger.INFO,
-        max_workspace_size=(1 << 32),
+        max_workspace_size=(1 << 29), # IMPORTANT! Setting this higher than 29 will cause CUDA out of memory error on Jetson Nano 4GB
     )
     torch.save(model_trt.state_dict(), os.path.join(file_name, "model_trt.pth"))
     logger.info("Converted TensorRT model done.")

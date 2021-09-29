@@ -25,6 +25,22 @@ where
 + `TEST_VIDEO.MP4` is located in `YOLOX`
 + `--tsize` match neural network input/output size
 
+**(ON JETSON NANO) Convert to TensorRT engine**
+
+```bash
+python3 tools/trt.py -f exps/default/nano-7class-hydo.py
+```
+This will generate a `model_trt.engine` in `YOLOX_outputs/nano-7class-hydo/`.
+
+**Run inference on Jetson Nano**
+
+```bash
+python3 tools/demo.py image -f exps/default/nano-7class-hydo.py --trt --save_result --path YOLOX_outputs/nano-7class-hydo/320bikelane.jpg
+```
+where
+
++ `320bikelane.jpg` is an example 320x320 pixel image.
+
 ## Model Performance
 
 Input dimension | Inference speed on RTX2070s desktop | Average Precision | Batch Size
