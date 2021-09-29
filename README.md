@@ -15,6 +15,11 @@ The weights are saved to `YOLOX_outputs/nano`
 
 Use `best_ckpt.pth`.
 
+Exp Names | Information
+--- | ---
+nano-alpha.py | Depth(0.25), Width(0.15), InputSize(320,320), TestSize(320,320)
+
+
 # Inference
 
 **Run demo for sanity check**
