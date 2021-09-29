@@ -32,14 +32,20 @@ python3 tools/trt.py -f exps/default/nano-7class-hydo.py
 ```
 This will generate a `model_trt.engine` in `YOLOX_outputs/nano-7class-hydo/`.
 
-**Run inference on Jetson Nano**
+**Run image inference on Jetson Nano**
 
 ```bash
 python3 tools/demo.py image -f exps/default/nano-7class-hydo.py --trt --save_result --path YOLOX_outputs/nano-7class-hydo/320bikelane.jpg
 ```
 where
 
-+ `320bikelane.jpg` is an example 320x320 pixel image.
++ `320bikelane.jpg` is an example 320x320 pixel image
+
+**Run video inference on Jetson Nano**
+
+```bash
+python3 tools/demo.py video -f exps/default/nano-7class-hydo.py --trt --path EXAMPLE_VIDEO.mp4
+```
 
 ## Model Performance
 
