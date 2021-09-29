@@ -1,6 +1,6 @@
 # Training YOLOX Nano for Hydo
 
-**Please see `tensorturtle/autolabel-cyclist-yolov5` for preparing data up to this point.**
+**Please see `tensorturtle/autolabel` for preparing data up to this point.**
 
 **Script to start training**
 ```bash
