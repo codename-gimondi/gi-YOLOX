@@ -16,6 +16,10 @@ from yolox.data.datasets import COCO_CLASSES
 from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
+#SORT
+import sys
+from sort.sort_minimal import *
+
 IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
 
 
@@ -210,6 +214,8 @@ def image_demo(predictor, vis_folder, path, current_time, save_result):
 
 
 def imageflow_demo(predictor, vis_folder, current_time, args):
+    sort_tracker = Sort()
+
     cap = cv2.VideoCapture(args.path if args.demo == "video" else args.camid)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)  # float
     height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)  # float
@@ -234,6 +240,30 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
         if ret_val:
             outputs, img_info = predictor.inference(frame)
             result_frame = predictor.visual(outputs[0], img_info, predictor.confthre)
+
+            #outputs format
+            # [x1, y1, x2, y2, object-ness confidence, class confidence, predicted class index]
+            # coordinates are in pixels
+
+            #expected input into SORT format
+            # [x1, y1, x2, y2, class confidence, predicted class index]
+            # coordinates are in pixels
+
+            # Convert outputs to SORT input detections
+            sort_start = time.time()
+            if outputs[0] is not None:
+                pred_box = outputs[0][:,:4].cpu().numpy()
+                class_conf = outputs[0][:,5:6].cpu().numpy()
+                class_ind = outputs[0][:,6:7].cpu().numpy()
+
+                tracked_inp = np.hstack((pred_box, class_conf, class_ind))
+
+                tracked_output = sort_tracker.update(tracked_inp)
+                print(tracked_output)
+
+            logger.info(f"SORT time: {time.time() - sort_start}")
+            
+
             #logger.info(f"Frame time: {time.time() - t_frame0}")
             if args.save_result:
                 vid_writer.write(result_frame)
@@ -252,6 +282,7 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
 
 
 def main(exp, args):
+
     if not args.experiment_name:
         args.experiment_name = exp.exp_name
 
