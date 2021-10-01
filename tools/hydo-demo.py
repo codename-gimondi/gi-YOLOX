@@ -20,6 +20,9 @@ from yolox.utils import fuse_model, get_model_info, postprocess, vis
 import sys
 from sort.sort_minimal import *
 
+# Watchout
+from watchout.watchout import *
+
 # Jetson Inference
 import jetson.inference
 import jetson.utils
@@ -217,7 +220,15 @@ def image_demo(predictor, vis_folder, path, current_time, save_result):
             break
 
 def imageflow_demo(predictor, vis_folder, current_time, args):
+
     sort_tracker = Sort()
+
+    # watchout parameters
+    wo_names = ['bicycle', 'bus', 'car', 'cyclist', 'motorcycle', 'pedestrian', 'truck']
+    wo_names_to_height_dict = {} # UNIMPLEMENTED height based distance
+    wo_width = 1280
+    wo_height = 720
+    watchout = Watchout(wo_names, wo_names_to_height_dict, wo_width, wo_height)
 
     # for video file input
     cap = cv2.VideoCapture(args.path if args.demo == "video" else args.camid)
@@ -257,7 +268,7 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
 
             # Convert outputs to SORT input detections
             sort_start = time.time()
-            if False and outputs[0] is not None:
+            if outputs[0] is not None:
                 pred_box = outputs[0][:,:4].cpu().numpy()
                 class_conf = outputs[0][:,5:6].cpu().numpy()
                 class_ind = outputs[0][:,6:7].cpu().numpy()
@@ -265,10 +276,11 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
                 tracked_inp = np.hstack((pred_box, class_conf, class_ind))
 
                 tracked_output = sort_tracker.update(tracked_inp)
-                print(tracked_output)
+                #print(tracked_output)
 
-            logger.info(f"SORT time: {time.time() - sort_start}")
-            
+                logger.info(f"SORT time: {time.time() - sort_start}")
+
+                watchout_output = watchout.step(tracked_output)
 
             #logger.info(f"Frame time: {time.time() - t_frame0}")
             if args.save_result:
