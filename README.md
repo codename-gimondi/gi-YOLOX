@@ -56,6 +56,11 @@ where
 ```bash
 python3 tools/demo.py video -f exps/default/nano-7class-hydo.py --trt --path EXAMPLE_VIDEO.mp4
 ```
+**LATEST running script**
+
+```bash
+python3 tools/hydo-demo.py video -f exps/default/nano-alpha.py --trt --path ~/maroz-gumuz.mp4
+```
 
 # === UPSTREAM README ===
 
