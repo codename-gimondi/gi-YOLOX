@@ -1,6 +1,6 @@
 # Training YOLOX Nano for Hydo
 
-**Please see `tensorturtle/autolabel-cyclist-yolov5` for preparing data up to this point.**
+**Please see `tensorturtle/autolabel` for preparing data up to this point.**
 
 **Script to start training**
 ```bash
@@ -15,6 +15,14 @@ The weights are saved to `YOLOX_outputs/nano`
 
 Use `best_ckpt.pth`.
 
+Exp Names | Information | Result
+--- | --- | ---
+nano-7class-hydo.py | Depth(0.33), Width(0.25), InputSize(320, 320), TestSize(320,320) | AP(61.35), FPS(25)
+nano-alpha.py | Depth(0.33), Width(0.25), InputSize(256,256), TestSize(256,256) | AP(34.6)
+
+
+# Inference
+
 **Run demo for sanity check**
 
 ```bash
@@ -25,12 +33,29 @@ where
 + `TEST_VIDEO.MP4` is located in `YOLOX`
 + `--tsize` match neural network input/output size
 
-## Model Performance
+**(ON JETSON NANO) Convert to TensorRT engine**
 
-Input dimension | Inference speed on RTX2070s desktop | Average Precision | Batch Size
---- | --- | --- | ---
-320x320 | 1.38 ms | 61.35 | 16
+```bash
+python3 tools/trt.py -f exps/default/nano-7class-hydo.py
+```
+This will generate a `model_trt.engine` in `YOLOX_outputs/nano-7class-hydo/`.
 
+*See [TensorRT README](YOLOX_tt/demo/TensorRT/python/README.md)*
+
+**Run image inference on Jetson Nano**
+
+```bash
+python3 tools/demo.py image -f exps/default/nano-7class-hydo.py --trt --save_result --path YOLOX_outputs/nano-7class-hydo/320bikelane.jpg
+```
+where
+
++ `320bikelane.jpg` is an example 320x320 pixel image
+
+**Run video inference on Jetson Nano**
+
+```bash
+python3 tools/demo.py video -f exps/default/nano-7class-hydo.py --trt --path EXAMPLE_VIDEO.mp4
+```
 
 # === UPSTREAM README ===
 

@@ -16,6 +16,10 @@ from yolox.data.datasets import COCO_CLASSES
 from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
+#SORT
+import sys
+from sort.sort_minimal import *
+
 IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
 
 
@@ -156,13 +160,16 @@ class Predictor(object):
         with torch.no_grad():
             t0 = time.time()
             outputs = self.model(img)
+            #logger.info(f"Model time: {time.time() - t0}")
+            t1 = time.time()
             if self.decoder is not None:
                 outputs = self.decoder(outputs, dtype=outputs.type())
             outputs = postprocess(
                 outputs, self.num_classes, self.confthre,
                 self.nmsthre, class_agnostic=True
             )
-            logger.info("Infer time: {:.4f}s".format(time.time() - t0))
+            #logger.info(f"Postprocessing time: {time.time() - t1}")
+            #logger.info("Total infer time: {:.4f}s".format(time.time() - t0))
         return outputs, img_info
 
     def visual(self, output, img_info, cls_conf=0.35):
@@ -207,27 +214,57 @@ def image_demo(predictor, vis_folder, path, current_time, save_result):
 
 
 def imageflow_demo(predictor, vis_folder, current_time, args):
+    sort_tracker = Sort()
+
     cap = cv2.VideoCapture(args.path if args.demo == "video" else args.camid)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)  # float
     height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)  # float
     fps = cap.get(cv2.CAP_PROP_FPS)
-    save_folder = os.path.join(
-        vis_folder, time.strftime("%Y_%m_%d_%H_%M_%S", current_time)
-    )
-    os.makedirs(save_folder, exist_ok=True)
-    if args.demo == "video":
-        save_path = os.path.join(save_folder, args.path.split("/")[-1])
-    else:
-        save_path = os.path.join(save_folder, "camera.mp4")
-    logger.info(f"video save_path is {save_path}")
-    vid_writer = cv2.VideoWriter(
-        save_path, cv2.VideoWriter_fourcc(*"mp4v"), fps, (int(width), int(height))
-    )
+    if args.save_result:
+        save_folder = os.path.join(
+            vis_folder, time.strftime("%Y_%m_%d_%H_%M_%S", current_time)
+        )
+        os.makedirs(save_folder, exist_ok=True)
+        if args.demo == "video":
+            save_path = os.path.join(save_folder, args.path.split("/")[-1])
+        else:
+            save_path = os.path.join(save_folder, "camera.mp4")
+        logger.info(f"video save_path is {save_path}")
+        vid_writer = cv2.VideoWriter(
+            save_path, cv2.VideoWriter_fourcc(*"mp4v"), fps, (int(width), int(height))
+        )
+    rolling_sums = []
     while True:
+        t_frame0 = time.time()
         ret_val, frame = cap.read()
         if ret_val:
             outputs, img_info = predictor.inference(frame)
             result_frame = predictor.visual(outputs[0], img_info, predictor.confthre)
+
+            #outputs format
+            # [x1, y1, x2, y2, object-ness confidence, class confidence, predicted class index]
+            # coordinates are in pixels
+
+            #expected input into SORT format
+            # [x1, y1, x2, y2, class confidence, predicted class index]
+            # coordinates are in pixels
+
+            # Convert outputs to SORT input detections
+            sort_start = time.time()
+            if outputs[0] is not None:
+                pred_box = outputs[0][:,:4].cpu().numpy()
+                class_conf = outputs[0][:,5:6].cpu().numpy()
+                class_ind = outputs[0][:,6:7].cpu().numpy()
+
+                tracked_inp = np.hstack((pred_box, class_conf, class_ind))
+
+                tracked_output = sort_tracker.update(tracked_inp)
+                print(tracked_output)
+
+            logger.info(f"SORT time: {time.time() - sort_start}")
+            
+
+            #logger.info(f"Frame time: {time.time() - t_frame0}")
             if args.save_result:
                 vid_writer.write(result_frame)
             ch = cv2.waitKey(1)
@@ -235,9 +272,17 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
                 break
         else:
             break
+        t_frame = time.time() - t_frame0
+        rolling_sums.append(t_frame)
+        rolling_avg = sum(rolling_sums) / len(rolling_sums)
+        if len(rolling_sums) == 100:
+            rolling_sums = rolling_sums[1:]
+        framerate = 1/rolling_avg
+        logger.info(f"Rolling frame rate: {framerate} FPS")
 
 
 def main(exp, args):
+
     if not args.experiment_name:
         args.experiment_name = exp.exp_name
 
