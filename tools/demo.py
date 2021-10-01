@@ -251,7 +251,7 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
 
             # Convert outputs to SORT input detections
             sort_start = time.time()
-            if outputs[0] is not None:
+            if False and outputs[0] is not None:
                 pred_box = outputs[0][:,:4].cpu().numpy()
                 class_conf = outputs[0][:,5:6].cpu().numpy()
                 class_ind = outputs[0][:,6:7].cpu().numpy()
