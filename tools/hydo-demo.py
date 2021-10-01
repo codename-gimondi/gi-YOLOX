@@ -226,8 +226,8 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
     # watchout parameters
     wo_names = ['bicycle', 'bus', 'car', 'cyclist', 'motorcycle', 'pedestrian', 'truck']
     wo_names_to_height_dict = {} # UNIMPLEMENTED height based distance
-    wo_width = 1280
-    wo_height = 720
+    wo_width = 256
+    wo_height = 256
     watchout = Watchout(wo_names, wo_names_to_height_dict, wo_width, wo_height)
 
     # for video file input
@@ -258,6 +258,7 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
             outputs, img_info = predictor.inference(frame)
             result_frame = predictor.visual(outputs[0], img_info, predictor.confthre)
 
+
             #outputs format
             # [x1, y1, x2, y2, object-ness confidence, class confidence, predicted class index]
             # coordinates are in pixels
@@ -276,11 +277,12 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
                 tracked_inp = np.hstack((pred_box, class_conf, class_ind))
 
                 tracked_output = sort_tracker.update(tracked_inp)
-                #print(tracked_output)
 
-                logger.info(f"SORT time: {time.time() - sort_start}")
+                #logger.info(f"SORT time: {time.time() - sort_start}")
 
                 watchout_output = watchout.step(tracked_output)
+                
+                logger.info(f"Watchout WARNING: {watchout_output}")
 
             #logger.info(f"Frame time: {time.time() - t_frame0}")
             if args.save_result:
