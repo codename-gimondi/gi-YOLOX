@@ -18,7 +18,7 @@ Use `best_ckpt.pth`.
 Exp Names | Information | Result
 --- | --- | ---
 nano-7class-hydo.py | Depth(0.33), Width(0.25), InputSize(320, 320), TestSize(320,320) | FPS(25)
-nano-alpha.py | Depth(0.33), Width(0.25), InputSize(256,256), TestSize(256,256) | 
+nano-alpha.py | Depth(0.33), Width(0.25), InputSize(256,256), TestSize(256,256) | AP(34.6)
 
 
 # Inference
