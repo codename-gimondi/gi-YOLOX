@@ -28,8 +28,8 @@
 using namespace nvinfer1;
 
 // stuff we know about the network and the input/output blobs
-static const int INPUT_W = 320;
-static const int INPUT_H = 320;
+static const int INPUT_W = 256;
+static const int INPUT_H = 256;
 static const int NUM_CLASSES = 7;
 const char* INPUT_BLOB_NAME = "input_0";
 const char* OUTPUT_BLOB_NAME = "output_0";
@@ -514,7 +514,7 @@ int main(int argc, char** argv) {
     auto start = std::chrono::system_clock::now();
     doInference(*context, blob, prob, output_size, pr_img.size());
     auto end = std::chrono::system_clock::now();
-    std::cout << "Inference-only time:" << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
+    std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
 
     std::vector<Object> objects;
     decode_outputs(prob, objects, scale, img_w, img_h);
