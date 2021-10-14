@@ -26,12 +26,11 @@ nano-alpha.py | Depth(0.33), Width(0.25), InputSize(256,256), TestSize(256,256) 
 **Run demo for sanity check**
 
 ```bash
-python3 tools/demo.py video -f exps/default/nano-7class-hydo.py -c YOLOX_outputs/nano-7class-hydo/best_ckpt.pth --path TEST_VIDEO.MP4 --conf 0.25 --nms 0.45 --tsize 320 --save_result --device gpu
+python3 tools/demo.py video -f exps/default/nano-alpha.py --path TEST_VIDEO.MP4 --save_result
 ```
 where
 
 + `TEST_VIDEO.MP4` is located in `YOLOX`
-+ `--tsize` match neural network input/output size
 
 **(ON JETSON NANO) Convert to TensorRT engine**
 
@@ -45,7 +44,7 @@ This will generate a `model_trt.engine` in `YOLOX_outputs/nano-7class-hydo/`.
 **Run image inference on Jetson Nano**
 
 ```bash
-python3 tools/demo.py image -f exps/default/nano-7class-hydo.py --trt --save_result --path YOLOX_outputs/nano-7class-hydo/320bikelane.jpg
+python3 tools/demo.py image -f exps/default/nano-alpha.py --trt --save_result --path YOLOX_outputs/nano-7class-hydo/320bikelane.jpg
 ```
 where
 
@@ -54,7 +53,7 @@ where
 **Run video inference on Jetson Nano**
 
 ```bash
-python3 tools/demo.py video -f exps/default/nano-7class-hydo.py --trt --path EXAMPLE_VIDEO.mp4
+python3 tools/demo.py video -f exps/default/nano-alpha.py --trt --path EXAMPLE_VIDEO.mp4
 ```
 **LATEST running script**
 
