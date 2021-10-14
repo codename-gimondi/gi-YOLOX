@@ -1,3 +1,13 @@
+# Installation
+
+For inference, please clone `tensorturtle/sort` and `tensorturtle/watchout` in the `tools` directory.
+
+```bash
+cd tools
+git clone git@github.com:tensorturtle/sort.git
+git clone git@github.com:tensorturtle/watchout.git
+```
+
 # Training YOLOX Nano for Hydo
 
 **Please see `tensorturtle/autolabel` for preparing data up to this point.**
