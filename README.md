@@ -21,6 +21,11 @@ python3 tools/train.py -f exps/default/nano-7class-hydo.py -d 1 -b 8 --fp16 -o -
 + -b: batch size ( recommended 8 per GPU )
 + -c: path to COCO pretrained checkpoint file
 
+**Training on Cloud**
+```bash
+python3 tools/train.py -f exps/nano-foxtrot.py -b 128 -d 0 -c yolox_nano.pth --fp16 --cache
+```
+
 The weights are saved to `YOLOX_outputs/nano`
 
 Use `best_ckpt.pth`.
