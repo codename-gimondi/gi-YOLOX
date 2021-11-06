@@ -27,6 +27,7 @@ nano_foxtrot | All the same parameters as default nano.py to enable pretrained f
 ## Pretrained Dataset Inventory
 
 Name | Notes
+--- | ---
 COCO2017 | https://cocodataset.org/#download
 
 ## Fine Tune Dataset Inventory
@@ -36,5 +37,12 @@ Name | Notes | Start Date | End Date | Raw Data Size | COCO-formatted Train Data
 gopro_alpha | 1920x1440 or 1920x1080 on-bike GoPro Hero Session 4. More front than rear, only a few night scenes. | 2021-09-16 | 2021-10-23 | 285GB of Video | 14.7 (uncompressed TAR archive)
 
 ## TensorRT Deployment Target Inventory
+
+Choose among
+
+Name | Notes
+--- | ---
+jetson_nano | NVIDIA Jetson Nano
+jetson_nx | NVIDIA Jetson Xavier NX
 
 
