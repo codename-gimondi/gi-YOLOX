@@ -2,7 +2,7 @@
 *~
 
 # user experiments directory
-datasets/
+/datasets/
 example_video/
 *.MP4
 *.mp4
