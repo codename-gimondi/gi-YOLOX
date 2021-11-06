@@ -7,8 +7,7 @@ A fork of [Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/Y
 ```
 .
 ├── assets
-├── camera_input
-├── datasets
+├── datasets # by default, train.py tries to find a COCO-formatted dataset within a directoy called COCO
 ├── demo
 ├── docs
 ├── exps
@@ -19,7 +18,7 @@ A fork of [Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/Y
 ├── setup.cfg
 ├── setup.py
 ├── tools
-├── yolox
+├── yolox # core library. This should be installed before anything else.
 └── YOLOX_outputs # weights and all other training / inference output, for each exps/ file respectively.
 ```
 **Please see `tensorturtle/autolabel` for preparing data up to this point.**
