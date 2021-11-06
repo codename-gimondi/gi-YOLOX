@@ -4,8 +4,9 @@ This is a version tracker for PyTorch weights.
 
 My YOLOX-compatible neural networks are named using the following system:
 ```
-<architecture_name>-<pretrained_dataset_name>-<fine_tune_dataset_name>-(<tensorrt_deployment_target>)
+<architecture_exp_name>-<pretrained_dataset_name>-<fine_tune_dataset_name>-(<tensorrt_deployment_target>)
 ```
+
 where
 
 + **architecture_name**: Each different configuration of a neural network will get a new name.
@@ -21,11 +22,18 @@ Relevant files to be found in: 'exps/' folder.
 
 Name | Notes | Input Dimensions | Output Categories | Other Architecture Parameters
 --- | --- | --- | --- | ---
-
+nano-foxtrot | All the same parameters as default nano.py to enable pretrained fine tuning | (416,416) | 7 | depth=0.33, width=0.25, random_size=(10,20)
 
 ## Pretrained Dataset Inventory
 
+Name | Notes
+COCO2017 | https://cocodataset.org/#download
+
 ## Fine Tune Dataset Inventory
+
+Name | Notes | Start Date | End Date | Raw Data Size | COCO-formatted Train Dataset Size
+--- | --- | --- | --- | --- | ---
+gopro_alpha | 1920x1440 or 1920x1080 on-bike GoPro Hero Session 4. More front than rear, only a few night scenes. | 2021-09-16 | 2021-10-23 | 285GB of Video | 14.7 (uncompressed TAR archive)
 
 ## TensorRT Deployment Target Inventory
 
