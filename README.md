@@ -30,15 +30,6 @@ The weights are saved to `YOLOX_outputs/nano`
 
 Use `best_ckpt.pth`.
 
-Exp Names | Information | Result (video)
---- | --- | ---
-nano-7class-hydo.py | Depth(0.33), Width(0.25), InputSize(320, 320), TestSize(320,320) | AP(61.35), FPS(25)
-nano-alpha.py | Depth(0.33), Width(0.25), InputSize(256,256), TestSize(256,256) | AP(34.6), FPS(27~32)
-nano-bravo.py | Depth(0.165), Width(0,125), InputSize(256,256), TestSize(256,256) | ?
-nano-charlie.py | Depth(0.165), Width(0.125), InputSize(256,256), RandomSize(5,12), TestSize(256,256) | ?
-nano-delta.py | Depth(0.33), Width(0.25), InputSize(640,640), RandomSize(10,30), TestSize(640,640)| ?
-nano-echo.py | Depth(0.33), Width(0.25), InputSize(416,416), RandomSize(10,20) | 
-
 # Inference
 
 **Run demo for sanity check**
