@@ -2,6 +2,8 @@
 
 A fork of [Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) mainly for training neural networks to run on [Project Gimondi](https://github.com/codename-gimondi).
 
+**Please see `tensorturtle/autolabel` for preparing data up to this point.**
+
 ## Directory Structure
 
 ```
@@ -21,7 +23,12 @@ A fork of [Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/Y
 ├── yolox # core library. This should be installed before anything else.
 └── YOLOX_outputs # weights and all other training / inference output, for each exps/ file respectively.
 ```
-**Please see `tensorturtle/autolabel` for preparing data up to this point.**
+
+### Quick Links
+
++ [Inventory of Neural Networks](https://github.com/codename-gimondi/gi-YOLOX/tree/main/inventory): Tracking the provenance of PyTorch weights.
++ [Experiments](https://github.com/codename-gimondi/gi-YOLOX/tree/main/exps): Recipe for neural network architectures.
++ [YOLOX Outputs](https://github.com/codename-gimondi/gi-YOLOX/tree/main/YOLOX_outputs): Trained neural network weights, etc.
 
 **Script to start training**
 ```bash
