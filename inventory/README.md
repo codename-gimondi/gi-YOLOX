@@ -1,6 +1,6 @@
 # Inventory
 
-This is a tracker for PyTorch weights.
+This is a version tracker for PyTorch weights.
 
 PyTorch checkpoints are named using the following system:
 ```
