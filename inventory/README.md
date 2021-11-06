@@ -10,7 +10,7 @@ My YOLOX-compatible neural networks are named using the following system:
 where
 
 + **architecture_name**: Each different configuration of a neural network will get a new name.
-+ **pretrained_dataset_name**: For example, if the neural network is pre-trained using COCO object detection dataset, this will be 'COCO2017'. Otherwise, if the neural network is trained from scratch, this will be 'None'.
++ **pretrained_dataset_name**: For example, if the neural network is pre-trained using COCO object detection dataset, this will be 'COCO2017'. Otherwise, if the neural network is trained from scratch, this will be 'None'. [See upstream root README.md for how to pretrain with COCO](https://github.com/codename-gimondi/gi-YOLOX#readme)
 + **fine_tune_dataset_name**: This will show which version of my own dataset I have used to train the neural network.
 + **tensorrt_deployment_target**(optional): While PyTorch weights are universal, optimized TensorRT files cannot be shared across different device architectures / GPUs.
 
