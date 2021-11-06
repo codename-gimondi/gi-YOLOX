@@ -23,6 +23,7 @@ Relevant files to be found in: 'exps/' folder.
 Name | Notes | Input Dimensions | Output Categories | Other Architecture Parameters
 --- | --- | --- | --- | ---
 nano_foxtrot | All the same parameters as default nano.py to enable pretrained fine tuning | (416,416) | 7 | depth=0.33, width=0.25, random_size=(10,20)
+nano_india | Speed-priority. Pretrained on COCO | (256,256) | 80 (pretrain) | depth=0.165, width=0.125, random_size=(5,10)
 
 ## Pretrained Dataset Inventory
 
@@ -44,5 +45,4 @@ Name | Notes
 --- | ---
 jetson_nano | NVIDIA Jetson Nano
 jetson_nx | NVIDIA Jetson Xavier NX
-
 
