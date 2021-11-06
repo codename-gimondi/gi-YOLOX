@@ -2,9 +2,9 @@
 
 This is a version tracker for PyTorch weights.
 
-PyTorch checkpoints are named using the following system:
+My YOLOX-compatible neural networks are named using the following system:
 ```
-<architecture_name>-<pretrained_dataset_name>-<fine_tune_dataset_name>-(<tensorrt_deployment_target>).pth
+<architecture_name>-<pretrained_dataset_name>-<fine_tune_dataset_name>-(<tensorrt_deployment_target>)
 ```
 where
 
