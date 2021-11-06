@@ -22,7 +22,7 @@ Relevant files to be found in: 'exps/' folder.
 
 Name | Notes | Input Dimensions | Output Categories | Other Architecture Parameters
 --- | --- | --- | --- | ---
-nano-foxtrot | All the same parameters as default nano.py to enable pretrained fine tuning | (416,416) | 7 | depth=0.33, width=0.25, random_size=(10,20)
+nano_foxtrot | All the same parameters as default nano.py to enable pretrained fine tuning | (416,416) | 7 | depth=0.33, width=0.25, random_size=(10,20)
 
 ## Pretrained Dataset Inventory
 
