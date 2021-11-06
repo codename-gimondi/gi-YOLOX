@@ -1,15 +1,27 @@
-# Installation
+# gi-YOLOX
 
-For inference, please clone `tensorturtle/sort` and `tensorturtle/watchout` in the `tools` directory.
+A fork of [Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) mainly for training neural networks to run on [Project Gimondi](https://github.com/codename-gimondi).
 
-```bash
-cd tools
-git clone git@github.com:tensorturtle/sort.git
-git clone git@github.com:tensorturtle/watchout.git
+## Directory Structure
+
 ```
-
-# Training YOLOX Nano for Hydo
-
+.
+├── assets
+├── camera_input
+├── datasets
+├── demo
+├── docs
+├── exps
+├── inventory
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── setup.cfg
+├── setup.py
+├── tools
+├── yolox
+└── YOLOX_outputs # weights and all other training / inference output, for each exps/ file respectively.
+```
 **Please see `tensorturtle/autolabel` for preparing data up to this point.**
 
 **Script to start training**
