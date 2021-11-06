@@ -34,7 +34,7 @@ COCO2017 | https://cocodataset.org/#download
 
 Name | Notes | Start Date | End Date | Raw Data Size | COCO-formatted Train Dataset Size
 --- | --- | --- | --- | --- | ---
-gopro_alpha | 1920x1440 or 1920x1080 on-bike GoPro Hero Session 4. More front than rear, only a few night scenes. | 2021-09-16 | 2021-10-23 | 285GB of Video | 14.7 (uncompressed TAR archive)
+gopro_alpha | 1920x1440 or 1920x1080 on-bike GoPro Hero Session 4. More front than rear, only a few night scenes. | 2021-09-16 | 2021-10-23 | 285GB of Video | 14.7GB (uncompressed TAR archive)
 
 ## TensorRT Deployment Target Inventory
 
