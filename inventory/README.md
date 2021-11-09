@@ -16,14 +16,22 @@ where
 
 YOLOX stores architecture definitions as python configuration files in `exps/` folder, and all else in the respective `YOLOX_outputs` folder.
 
-## Architecture Name Inventory
+## Ready to Use Weights
+
+Name (a composition of the below components) | Info
+--- | ---
+nano_foxtrot-COCO-gopro_alpha | Real time on Jetson Xavier NX
+nano_juliet
+
+## Name Components
 
 Relevant files to be found in: 'exps/' folder.
 
 Name | Notes | Input Dimensions | Output Categories | Other Architecture Parameters
 --- | --- | --- | --- | ---
 nano_foxtrot | All the same parameters as default nano.py to enable pretrained fine tuning | (416,416) | 7 | depth=0.33, width=0.25, random_size=(10,20)
-nano_india | Speed-priority. Pretrained on COCO | (256,256) | 80 (pretrain) | depth=0.165, width=0.125, random_size=(5,10)
+nano_india | Speed-priority. Pretrained on COCO | (256,256) | 80 (COCO) | depth=0.165, width=0.125, random_size=(5,10)
+nano_julet | transfer learning from `nano_india` on gopro_alpha dataset | (256,256) | 7 | same as `nano_india`
 
 ## Pretrained Dataset Inventory
 
