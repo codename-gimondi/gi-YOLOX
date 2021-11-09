@@ -33,10 +33,10 @@ COCO2017 | https://cocodataset.org/#download
 
 ## Fine Tune Dataset Inventory
 
-Name | Notes | Start Date | End Date | Raw Data Size | COCO-formatted Train Dataset Size
+Name | Notes | Start Date | End Date | Raw Data Size | COCO-formatted TAR archive file
 --- | --- | --- | --- | --- | ---
-gopro_alpha | 1920x1440 or 1920x1080 on-bike GoPro Hero Session 4. More front than rear, only a few night scenes. | 2021-09-16 | 2021-10-23 | 285GB of Video | 14.7GB (uncompressed TAR archive)
-gt_sindorim | 1920x1440 on-bike GoPro Hero Session 4. Front only. Manual labels by Jason Sohn. Children's day, perfect weather lots of people. | 2021-05-05 | 2021-05-05 | 13.5GB of Video | 25.6MB (TAR archive) 
+gopro_alpha | 1920x1440 or 1920x1080 on-bike GoPro Hero Session 4. More front than rear, only a few night scenes. | 2021-09-16 | 2021-10-23 | 285GB of Video | 14.7GB
+gt_sindorim | 1920x1440 on-bike GoPro Hero Session 4. Front only. Manual labels by Jason Sohn. Children's day, perfect weather lots of people. | 2021-05-05 | 2021-05-05 | 13.5GB of Video | 25.6MB
 ## TensorRT Deployment Target Inventory
 
 Choose among
