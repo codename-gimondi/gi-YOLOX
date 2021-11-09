@@ -21,7 +21,7 @@ YOLOX stores architecture definitions as python configuration files in `exps/` f
 Name (a composition of the below components) | Info
 --- | ---
 nano_foxtrot-COCO-gopro_alpha | Real time on Jetson Xavier NX
-nano_juliet
+nano_juliet-COCO-gopro_alpha | Hopefully real time on Jetson Nano 
 
 ## Name Components
 
