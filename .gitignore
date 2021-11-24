@@ -6,6 +6,7 @@
 example_video/
 *.MP4
 *.mp4
+vis_res
 
 
 # temporary files which can be created if a process still has a handle open of a deleted file
