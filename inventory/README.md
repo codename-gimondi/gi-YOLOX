@@ -32,7 +32,7 @@ Name | Notes | Input Dimensions | Output Categories | Other Architecture Paramet
 nano_foxtrot | All the same parameters as default nano.py to enable pretrained fine tuning | (416,416) | 7 | depth=0.33, width=0.25, random_size=(10,20)
 nano_india | Speed-priority. Pretrained on COCO | (256,256) | 80 (COCO) | depth=0.165, width=0.125, random_size=(5,10)
 nano_juliet | transfer learning from `nano_india` | (256,256) | 7 | same as `nano_india`
-small_kio | Transfer learned from YOLOX_s(mall) for making demo videos on desktop GPU | (640,640) | 7 | same as YOLOX_s
+small_kilo | Transfer learned from YOLOX_s(mall) for making demo videos on desktop GPU | (640,640) | 7 | same as YOLOX_s
 
 ## Pretrained Dataset Inventory
 
