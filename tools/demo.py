@@ -16,10 +16,6 @@ from yolox.data.datasets import COCO_CLASSES
 from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
-#SORT
-import sys
-from sort.sort_minimal import *
-
 IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
 
 
@@ -214,8 +210,6 @@ def image_demo(predictor, vis_folder, path, current_time, save_result):
 
 
 def imageflow_demo(predictor, vis_folder, current_time, args):
-    sort_tracker = Sort()
-
     cap = cv2.VideoCapture(args.path if args.demo == "video" else args.camid)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)  # float
     height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)  # float
@@ -258,7 +252,7 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
 
                 tracked_inp = np.hstack((pred_box, class_conf, class_ind))
 
-                tracked_output = sort_tracker.update(tracked_inp)
+                tracked_output = tracked_inp
                 print(tracked_output)
 
             logger.info(f"SORT time: {time.time() - sort_start}")
